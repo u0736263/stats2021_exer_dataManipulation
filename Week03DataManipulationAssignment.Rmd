@@ -80,12 +80,21 @@ Examine the dataset and answer the following questions. Enter any code you use i
 
 * How many variables are in the dataset?
 
-    + Answer:
+    + Answer:11
     
 * List each variable and the level of measurement. Note if there are any issues you see with the data in that variable. (The first one is done for you.)
 
     + sex - nominal, no issues noted
-    
+    + research - nominal, no issues noted
+    + height - ratio, no issues noted
+    + weight - ratio, no issues noted
+    + lvst1 - ordinal, no issues noted
+    + lvst2 - ordinal, no issues noted
+    + lvst3 - ordinal, no issues noted
+    + lvst4 - ordinal, no issues noted
+    + frst1 - ordinal, no issues noted
+    + frst2 - ordinal, no issues noted
+    + frst3 - ordinal, no issues noted
 ```{r, eval=FALSE}
 
 ```
@@ -95,7 +104,7 @@ The dataset includes variables for height and weight. Calculate the BMI for each
 
 * What level of measurement is the new bmi variable?
 
-    + Answer: 
+    + Answer: ratio
 
 ```{r}
 dataset <- dataset %>% mutate(bmi = round(weight/(height/100)^2,1)) 
@@ -109,7 +118,7 @@ The Love of Statistics Scale consists of 4 questions rated on a scale of 1-5. Be
 
 * What level of measurement is the new lvst4reverse variable?
 
-    + Answer: 
+    + Answer: discrete variable
     
 ```{r}
 # The line below is how I first reverse coded the variable. It seemed to work, but I later found some problems with the z-scores.
@@ -127,7 +136,7 @@ Run the following code block to calculate a final score for the Love of Statisti
 
 * What level of measurement is the new LOSS_total
 
-    + Answer: 
+    + Answer: continuous variable
 
 
 ```{r }
@@ -146,6 +155,7 @@ dataset <- dataset %>% mutate(FOSS_total = as.numeric(frst1) + as.numeric(frst2)
 
 Note any issues with the data in the new variables. Place code you use to examine the variables in the code block below. (Or just describe what you did.)
 
+Ran the chunks above and visually inspected variables
     
 ```{r}
 
@@ -166,17 +176,17 @@ Z-scores are useful for a number of reasons. Since z-scores are unit free (the u
 
 * How do the z-scores compare between the sum scores and the mean scores?
 
-    + Answer: 
+    + Answer: they are the same
     
 * Are there any z-scores greater than 2 in the LOSS and FOSS variables? How many?
 
-    + LOSS z-score > 2:
-    + FOSS z-score > 2:
+    + LOSS z-score > 2:1
+    + FOSS z-score > 2:2
     
 * What does it mean if a z-score is positive or negative?
 
-    + positive:
-    + negative:
+    + positive:above average
+    + negative:below average
     
 ```{r}
 dataset <- dataset %>% mutate(LOSS_total_z = scale(LOSS_total))
